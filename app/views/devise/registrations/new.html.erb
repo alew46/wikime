@@ -1,4 +1,4 @@
-<div class="well", id="signup-box">
+<!-- <div class="well", id="signup-box">
   <legend><h2>Sign up for Wikime</h2></legend>
   <form class="form-horizontal">
     <div class="col-lg-10">
@@ -25,12 +25,46 @@
         </div>
       </div>
 
+      <div class="col-md-6">
         <div class="actions">
           <%= f.submit "Sign up", :class => "btn btn-primary" %>
         </div>
         <% end %>
-      </br>
+        </br>
         <%= render "devise/shared/links" %>
+      </div>
       </fieldset>
     </form>
+</div> -->
+
+<div class="well", id="signup-box">
+  <legend><h2>Sign up for Wikime</h2></legend>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "Sign up", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+  <br>
+  <%= render "devise/shared/links" %>
 </div>

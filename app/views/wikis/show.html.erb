@@ -1,0 +1,19 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="col-lg-10">
+  <div class="well well-lrg">
+    <legend><h1><%= @wiki.title %></h1></legend>
+    <p class="text-muted"><small>This is a wiki created by <%= @wiki.user %></small></p>
+    <br>
+
+
+
+    <div class="col-lg-10">
+      <%= @wiki.body %>
+    </div>
+
+    <br>
+
+    <%= link_to 'Edit this wiki', edit_wiki_path(@wiki) %>
+
+  </div>
+</div>

@@ -23,7 +23,11 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
         <ul class="nav navbar-nav">
           <li> <%= link_to "New Wiki", new_wiki_path, :class => 'navbar-link' %> </li>
-          <li> <%= link_to "My Wikis", new_wiki_path, :class => 'navbar-link' %> </li>
+          <% if user_signed_in? %>
+            <li> <%= link_to "My Wikis", user_path(current_user), :class => 'navbar-link' %> </li>
+          <% else %>
+            <li> <%= link_to "My Wikis", new_user_registration_path, :class => 'navbar-link' %> </li>
+          <% end %>
           <li> <%= link_to "All Wikis", wikis_path, :class => 'navbar-link' %> </li>
           <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>

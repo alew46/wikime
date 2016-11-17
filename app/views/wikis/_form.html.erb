@@ -21,10 +21,12 @@
     <%= f.text_area :body, :rows => "10", style: "width:80%" %>
   </div>
   <br>
-  <div class="field">
-    <%= f.label :private, "Make this wiki private:" %><br>
-    <%= f.check_box :private %>
-  </div>
+  <% unless current_user.standard?  %>
+    <div class="field">
+      <%= f.label :private, "Make this wiki private:" %><br>
+      <%= f.check_box :private %>
+    </div>
+  <% end %>
   </br>
   <div class="actions">
     <%= f.submit "Save Wiki", :class => "btn btn-primary" %>

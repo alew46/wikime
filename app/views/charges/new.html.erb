@@ -1,0 +1,21 @@
+<%= form_tag charges_path do %>
+<div class="col-md-12">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Go Premium!</h3>
+    </div>
+    <div class="panel-body">
+      <h4>A Wikime Premium account lets you make your Wikis private and invite only collaboraters you choose.</h4>
+        <h6>Your one-time $15 fee gets you a lifetime Premium account. We process all payments securely through <a href="https://stripe.com/">Stripe</a>.</h6>
+        <ul>
+          <li>Create private Wikis that only you and people you invite can see.</li>
+          <li>Invite collaborators to edit your pages and add what they know.</li>
+          <li>Ideal for teams, classes, and companies.</li>
+        </ul>
+        <div style="margin-top:10px; margin-left:5px;">
+          <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
+        </div>
+    <% end %>
+    </div>
+  </div>
+</div>

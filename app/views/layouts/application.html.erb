@@ -45,6 +45,11 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li> <%= link_to current_user.email, edit_user_registration_path, :class => 'navbar-link' %> </li>
+            <% if current_user.standard? %>
+              <li> <%= link_to "Upgrade to Premium", new_charge_path, :class => 'navbar-upgrade' %> </li>
+            <% else %>
+              <li><%# downgrade link here %></li>
+            <% end %>
             <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </li>
           <% else %>
             <li> <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %><span class="sr-only">(current)</span> </li>

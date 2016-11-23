@@ -16,7 +16,7 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       customer: customer.id,
-      amount: Amount.default,
+      amount: 15_00,
       description: "Wikime Premium Plan - #{current_user.email}",
       currency: 'usd'
     )
@@ -31,10 +31,15 @@ class ChargesController < ApplicationController
   end
 
   def downgrade
-    # your code magic happens here
+
     # downgrade the user
+    current_user.standard!
+    flash[:notice] = "Your account has been downgraded to standard. Any private Wikis you owned are now public."
+
     # set all of their wikis to not be private
+
     # redirect somewhere
+    redirect_to user_path(current_user)
   end
 
 end

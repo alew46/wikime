@@ -37,6 +37,7 @@ class ChargesController < ApplicationController
     flash[:notice] = "Your account has been downgraded to standard. Any private Wikis you owned are now public."
 
     # set all of their wikis to not be private
+    current_user.wikis.update_all(private: false)
 
     # redirect somewhere
     redirect_to user_path(current_user)

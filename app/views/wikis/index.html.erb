@@ -7,6 +7,7 @@
     <table class="table table-striped table-hover">
       <tbody>
         <% @wikis.each do |wiki| %>
+          <% unless wiki.private? %>
           <tr>
             <td class="col-md-4"><%= wiki.title %></td>
             <td class="col-md-4"><small>Author: <%= wiki.user.try(:email) %><small></td>
@@ -14,6 +15,7 @@
             <td><%= link_to 'Edit', edit_wiki_path(wiki), :class => "btn btn-primary" %></td>
             <td><%= link_to 'Delete', wiki, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete this Wiki?' } %></td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

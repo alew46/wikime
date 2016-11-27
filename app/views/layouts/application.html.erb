@@ -48,7 +48,7 @@
             <% if current_user.standard? %>
               <li> <%= link_to "Upgrade to Premium", new_charge_path, :class => 'navbar-upgrade' %> </li>
             <% else %>
-              <li><%= link_to "Downgrade to Standard", charges_downgrade_path, method: :downgrade, :class => 'navbar-upgrade' %> </li>
+              <li><%= link_to "Downgrade to Standard", charges_downgrade_path, method: :downgrade, data: {confirm: "Are you sure you want to downgrade? Any private Wikis you own will become public and viewable by everyone."}, :class => 'navbar-upgrade' %> </li>
             <% end %>
             <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </li>
           <% else %>

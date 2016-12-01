@@ -1,0 +1,26 @@
+<div class="col-lg-10">
+  <div class="well">
+    <h1>Collaborators on the <%= @wiki.title %> Wiki</h1>
+    <br>
+    <p>Use this screen to add or remove collaborators to this Wiki. Any collaborators you add can make edits to the Wiki, so choose your teammates wisely!</p>
+    <br>
+    <table class="table">
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.email %>
+        </td>
+        <td>
+          <% if @wiki.users.include?(user) %>
+            <%= link_to "Remove collaborator", wiki_collaborator_path(@wiki, id: user.id), method: :delete %>
+          <% elsif user == @wiki.user %>
+            Owner
+          <% else %>
+            <%= link_to "Make collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

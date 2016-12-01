@@ -13,7 +13,16 @@
 
     <br>
 
-    <%= link_to 'Edit this wiki', edit_wiki_path(@wiki) %>
+    <div class="col-sm-4">
+      <div style="margin: 2px;">
+        <%= link_to 'Edit this wiki', edit_wiki_path(@wiki) %>
+      </div>
+      <div style="margin: 2px;">
+        <% if current_user == @wiki.user || current_user.role == "Admin" %>
+          <%= link_to "Add/Remove Collaborators", wiki_collaborators_path(@wiki) %>
+        <% end %>
+      </div>
+    </div>
 
   </div>
 </div>
